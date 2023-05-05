@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aws-load-balancer-controller
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "20"
+spec:
+  source:
+    chart: aws-load-balancer-controller
+    repoURL: https://aws.github.io/eks-charts
+    targetRevision: 1.5.2
+    helm:
+      releaseName: aws-load-balancer-controller
+      values: |-
+        clusterName: "eks-demo-tsh"
+        awsRegion: "eu-west-1"
+        awsVpcId: "vpc-04b45e3f202617e19"
+        serviceAccount:
+          annotations:
+            eks.amazonaws.com/role-arn: arn:aws:iam::005699609604:role/aws-load-balancer-controllerIRSA-eks-demo-tsh
+  destination:
+    name: in-cluster
+    namespace: aws-load-balancer-controller
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
