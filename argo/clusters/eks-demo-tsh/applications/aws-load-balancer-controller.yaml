@@ -6,6 +6,7 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "20"
 spec:
+  project: default
   source:
     chart: aws-load-balancer-controller
     repoURL: https://aws.github.io/eks-charts
