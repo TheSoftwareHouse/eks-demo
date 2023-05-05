@@ -17,7 +17,7 @@ env:
 
 jobs:
   terraform-plan:
-    name: Terraform Plan
+    name: Terraform Plan & Apply
     runs-on: ubuntu-latest
     environment: stage
     timeout-minutes: 30
