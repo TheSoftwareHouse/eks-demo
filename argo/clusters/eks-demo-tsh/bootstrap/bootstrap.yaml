@@ -9,6 +9,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    repoURL: git@github.com:TheSoftwareHouse/eks-demo.git
+    repoURL: https://github.com/TheSoftwareHouse/eks-demo.git
     targetRevision: main
     path: eks-demo/argo/clusters/eks-demo-tsh/applications/
