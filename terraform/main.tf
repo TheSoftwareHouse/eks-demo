@@ -26,8 +26,8 @@ module "vpc" {
     "172.40.4.0/22"
   ]
   public_subnet_tags = {
-    "kubernetes.io/role/elb"                    = "1"
-    "kubernetes.io/cluster/eks-demo-aws-tsh-io" = "owned"
+    "kubernetes.io/role/elb"             = "1"
+    "kubernetes.io/cluster/eks-demo-tsh" = "owned"
   }
 
   private_subnet_names = [
@@ -41,9 +41,9 @@ module "vpc" {
   ]
 
   private_subnet_tags = {
-    "kubernetes.io/role/internal-elb"           = "1"
-    "kubernetes.io/cluster/eks-demo-aws-tsh-io" = "owned"
-    "karpenter.sh/discovery"                    = "eks-demo-aws-tsh-io"
+    "kubernetes.io/role/internal-elb"    = "1"
+    "kubernetes.io/cluster/eks-demo-tsh" = "owned"
+    "karpenter.sh/discovery"             = "eks-demo-tsh"
   }
 
   database_subnet_names = [
