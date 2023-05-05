@@ -103,7 +103,6 @@ module "eks" {
   create_karpenter_service_account = true
 
   kms_key_administrators = [
-    "arn:aws:iam::005699609604:role/AWSReservedSSO_AdministratorAccess_a30cfa46d3f823dc",
     "arn:aws:iam::005699609604:role/aws-reserved/sso.amazonaws.com/eu-west-1/AWSReservedSSO_AdministratorAccess_a30cfa46d3f823dc",
     "arn:aws:iam::${data.aws_caller_identity.current.account_id}:root",
     data.aws_caller_identity.current.arn
