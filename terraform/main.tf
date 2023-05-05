@@ -58,7 +58,7 @@ module "vpc" {
 
   database_subnet_tags = {}
 
-  tags = local.common.tags
+  tags = {}
 }
 
 module "eks" {
@@ -114,5 +114,5 @@ module "eks" {
     }
   ]
 
-  tags = local.common.tags
+  tags = {}
 }
