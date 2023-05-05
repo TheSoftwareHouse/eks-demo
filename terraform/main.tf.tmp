@@ -62,7 +62,7 @@ module "vpc" {
 }
 
 module "eks" {
-  source = "git@github.com:TheSoftwareHouse/aws-eks-cluster.git?ref=main"
+  source = "github.com/TheSoftwareHouse/aws-eks-cluster.git?ref=main"
 
   cluster_name    = "eks-demo-tsh"
   cluster_version = "1.26"
