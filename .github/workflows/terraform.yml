@@ -15,7 +15,7 @@ jobs:
     name: Terraform Plan
     runs-on: ubuntu-latest
     environment: stage
-    timeout-minutes: 10
+    timeout-minutes: 30
     defaults:
       run:
         working-directory: terraform
