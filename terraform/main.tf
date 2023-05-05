@@ -67,10 +67,13 @@ module "eks" {
   cluster_name    = "eks-demo-tsh"
   cluster_version = "1.26"
 
-  cluster_endpoint_public_access_cidrs = concat([
-    "87.206.27.228/32"
-  ], data.github_ip_ranges.this.actions_ipv4)
+  # temporary workaround for cidr range
+  cluster_endpoint_public_access_cidrs = ["0.0.0.0/0"]
 
+  # cluster_endpoint_public_access_cidrs = concat([
+  #   "87.206.27.228/32"
+  # ], data.github_ip_ranges.this.actions_ipv4)
+  #
   vpc_id      = module.vpc.vpc_id
   vpc_subnets = module.vpc.private_subnets
 
