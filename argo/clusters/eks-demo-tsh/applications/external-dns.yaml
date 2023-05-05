@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-dns
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  project: default
+  source:
+    chart: external-dns
+    repoURL: oci://registry-1.docker.io/bitnamicharts/external-dns
+    targetRevision: 6.19.1
+    helm:
+      releaseName: external-dns
+      values: |-
+        provider: aws
+        policy: upsert-only
+        sources:
+          - ingress
+        domainFilters:
+          - devops-sandbox.aws.tsh.io	
+        serviceAccount:
+          annotations:
+            eks.amazonaws.com/role-arn: arn:aws:iam::005699609604:role/external-dnsIRSA-eks-demo-tsh
+  destination:
+    name: in-cluster
+    namespace: external-dns
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
