@@ -25,7 +25,7 @@ spec:
             eks.amazonaws.com/role-arn: arn:aws:iam::005699609604:role/external-dnsIRSA-eks-demo-tsh
   destination:
     name: in-cluster
-    namespace: external-dns
+    namespace: kube-system
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
