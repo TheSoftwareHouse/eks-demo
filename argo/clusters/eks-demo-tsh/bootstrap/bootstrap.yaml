@@ -12,6 +12,8 @@ spec:
     repoURL: https://github.com/TheSoftwareHouse/eks-demo.git
     targetRevision: main
     path: argo/clusters/eks-demo-tsh/applications/
+    directory:
+      recurse: true
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
