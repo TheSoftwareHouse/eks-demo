@@ -1,0 +1,14 @@
+# https://taskfile.dev
+version: "3"
+env:
+  TF_PLUGIN_CACHE_DIR: "{{ .HOME }}/.terraform.d/"
+  TERRAGRUNT_PARALLELISM: 20
+tasks:
+  cleanup:
+    desc: Cleanup Terraform/Terragrunt Artifacts
+    cmds:
+      - find . -name ".terragrunt-cache" -type d -exec rm -rf {} +
+      - find . -name ".terragrunt" -type d -exec rm -rf {} +
+      - find . -name ".terraform" -type d -exec rm -rf {} +
+      - find . -name ".terraform.lock.hcl" -type f -exec rm -f {} +
+      - rm -rf $TF_PLUGIN_CACHE_DIR/.terraform.d/*
