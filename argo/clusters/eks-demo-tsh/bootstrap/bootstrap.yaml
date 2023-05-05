@@ -11,4 +11,4 @@ spec:
   source:
     repoURL: https://github.com/TheSoftwareHouse/eks-demo.git
     targetRevision: main
-    path: eks-demo/argo/clusters/eks-demo-tsh/applications/
+    path: argo/clusters/eks-demo-tsh/applications/
