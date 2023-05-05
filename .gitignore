@@ -1,0 +1,7 @@
+.terraform
+.terraform.lock.hcl
+.envrc
+.terragrunt-cache
+.terraform.lock.hcl
+dist/*
+*.pyc

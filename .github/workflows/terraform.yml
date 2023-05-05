@@ -1,0 +1,35 @@
+name: Terraform Plan & Apply
+
+on:
+  workflow_dispatch:
+
+concurrency: terraform
+
+env:
+  AWS_REGION: eu-west-1
+  DEPLOYMENT_CI_ROLE: arn:aws:iam::005699609604:role/GithubActions
+  ACCOUNT_NAME: tsh-devops-sandbox
+
+jobs:
+  terraform-plan:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    environment: stage
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: terraform
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-region: ${{ env.AWS_REGION }}
+          role-to-assume: ${{ env.DEPLOYMENT_CI_ROLE }}
+          role-session-name: ${{ env.ACCOUNT_NAME }}-terraform-plan
+      - name: Check Caller Identity
+        run: aws sts get-caller-identity
