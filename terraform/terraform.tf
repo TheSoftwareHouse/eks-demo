@@ -4,6 +4,13 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 4"
     }
+    github = {
+      source  = "integrations/github"
+      version = "~> 5.0"
+    }
+    kubernetes = {
+      version = "~> 2.0"
+    }
   }
   backend "s3" {
     bucket         = "tsh-eks-demo-terraform-state"
@@ -33,3 +40,5 @@ provider "kubernetes" {
   cluster_ca_certificate = base64decode(data.aws_eks_cluster.eks.certificate_authority[0].data)
   token                  = data.aws_eks_cluster_auth.eks.token
 }
+
+provider "github" {}
