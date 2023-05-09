@@ -51,3 +51,17 @@ And set up simple application for Demo purposes
     - 'git clone -b master https://gitlab-ci-token:${CI_JOB_TOKEN}@${CI_SERVER_HOST}/example/flux-aws.git'
     - COMMIT=$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA yq e "${IMAGE_TAG_PATH} = strenv(COMMIT)" -i "flux-aws/$ENVIRONMENT/$CLUSTER/helmreleases/internal/$RELEASE_NAME.yaml"
 ```
+
+# ArgoCD CLI
+
+Login:
+```
+argocd login argocd.devops-sandbox.aws.tsh.io
+User: admin
+Password:
+```
+
+Add Public OCI Repository:
+```
+argocd repo add public.ecr.aws/karpenter/karpenter --type helm --name karpenter --enable-oci
+```
