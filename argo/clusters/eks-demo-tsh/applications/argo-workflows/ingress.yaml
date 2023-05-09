@@ -18,9 +18,9 @@
         - path: /
           backend:
             service:
-              name: argo-workflows-release-server
+              name: argo-workflows-server
               port:
-                number: 443
+                number: 2746
           pathType: Prefix
     tls:
     - hosts:
