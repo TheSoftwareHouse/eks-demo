@@ -1,0 +1,32 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: datadog-agent
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  project: default
+  source:
+    chart: datadog
+    repoURL: https://helm.datadoghq.com
+    targetRevision: 3.29.0
+    helm:
+      releaseName: datadog-agent
+      values: |-
+        datadog:
+          apiKey: REMOVED
+          site: datadoghq.eu
+          logs:
+            enabled: true
+            containerCollectAll: true
+  destination:
+    name: in-cluster
+    namespace: datadog-agent
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
