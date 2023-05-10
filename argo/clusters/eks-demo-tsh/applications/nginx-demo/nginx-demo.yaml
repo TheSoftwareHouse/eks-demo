@@ -1,0 +1,28 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-demo
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "30"
+spec:
+  project: default
+  source:
+    chart: nginx
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 14.1.1
+    helm:
+      releaseName: nginx
+      values: |-
+        service: 
+          type: ClusterIP
+  destination:
+    name: in-cluster
+    namespace: nginx
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
