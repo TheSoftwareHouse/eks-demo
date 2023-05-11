@@ -1,0 +1,28 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "alb"
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/group.name: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+  name: nginx-yaml-ingress
+  namespace: nginx
+spec:
+  rules:
+  - host: nginx-yaml.devops-sandbox.aws.tsh.io
+    http:
+      paths:
+      - path: /
+        backend:
+          service:
+            name: nginx-yaml-service
+            port:
+              number: 80
+        pathType: Prefix
+  tls:
+  - hosts:
+    - nginx-yaml.devops-sandbox.aws.tsh.io

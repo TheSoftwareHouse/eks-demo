@@ -1,0 +1,16 @@
+---
+image:
+  tag: 1.24.0
+service:
+  type: ClusterIP
+ingress:
+  enabled: true
+  hostname: nginx-helm.devops-sandbox.aws.tsh.io
+  annotations:
+    kubernetes.io/ingress.class: "alb"
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/group.name: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+  tls: true
