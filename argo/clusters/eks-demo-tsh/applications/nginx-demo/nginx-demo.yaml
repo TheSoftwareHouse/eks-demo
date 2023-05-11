@@ -15,6 +15,10 @@ spec:
     helm:
       releaseName: nginx
       values: |-
+				image:
+  				registry: docker.io
+  				repository: bitnami/nginx
+  				tag: 1.24-debian-11
         service: 
           type: ClusterIP
   destination:
