@@ -17,6 +17,8 @@ spec:
       values: |-
         server:
           secure: true
+          extraArgs:
+            - --auth-mode=server
   destination:
     name: in-cluster
     namespace: argo-workflows
