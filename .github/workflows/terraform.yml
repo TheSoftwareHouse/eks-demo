@@ -27,7 +27,7 @@ jobs:
     timeout-minutes: 30
     defaults:
       run:
-        working-directory: terraform
+        working-directory: terraform/eks
     permissions:
       id-token: write
       contents: read
