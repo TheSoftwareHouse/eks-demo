@@ -1,14 +1,18 @@
 name: Terraform Plan & Apply
 
+# desired layout, not for our purposes for now (development)
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths: 
+#       - 'terraform/**'
+#   pull_request:
+#     paths: 
+#       - 'terraform/**'
+#   workflow_dispatch:
+
 on:
-  push:
-    branches:
-      - main
-    paths: 
-      - 'terraform/**'
-  pull_request:
-    paths: 
-      - 'terraform/**'
   workflow_dispatch:
 
 concurrency: terraform
