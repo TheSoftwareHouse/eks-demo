@@ -2,6 +2,10 @@
 
 To access cluster, assume role from TSH-Devops-Sandbox (AdministratorAccess), same for working with Terraform (there are differences when applying through Github Actions, because caller identity is different, best to leave Terraform to by handled by Github Actions)
 
+# Known Issues
+
+On first apply, before you are able to manage aws-auth configmap, you have to comment out `kubernetes` provider so it doesn't create dependency loop, after cluster is created, you can uncomment it and continue with managing aws-auth configmap.
+
 # Bootstrap
 
 Getting Access To Cluster
