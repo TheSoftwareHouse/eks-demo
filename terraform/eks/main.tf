@@ -4,7 +4,7 @@ resource "aws_ebs_encryption_by_default" "this" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "5.0.0"
+  version = "4.0.2"
 
   name                   = "eks.demo.aws.tsh.io"
   cidr                   = "172.40.0.0/16"
