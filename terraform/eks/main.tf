@@ -4,7 +4,7 @@ resource "aws_ebs_encryption_by_default" "this" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "3.19.0"
+  version = "5.0.0"
 
   name                   = "eks.demo.aws.tsh.io"
   cidr                   = "172.40.0.0/16"
@@ -65,7 +65,7 @@ module "eks" {
   source = "github.com/TheSoftwareHouse/aws-eks-cluster.git?ref=main"
 
   cluster_name    = "eks-demo-tsh"
-  cluster_version = "1.26"
+  cluster_version = "1.27"
 
   # temporary workaround for cidr range
   cluster_endpoint_public_access_cidrs = ["0.0.0.0/0"]
