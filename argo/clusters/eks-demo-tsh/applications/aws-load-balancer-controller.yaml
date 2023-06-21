@@ -16,7 +16,7 @@ spec:
       values: |-
         clusterName: "eks-demo-tsh"
         awsRegion: "eu-west-1"
-        awsVpcId: "vpc-04b45e3f202617e19"
+        awsVpcId: "vpc-04e55536efdb38a44"
         serviceAccount:
           annotations:
             eks.amazonaws.com/role-arn: arn:aws:iam::005699609604:role/aws-load-balancer-controllerIRSA-eks-demo-tsh
