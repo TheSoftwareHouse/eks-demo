@@ -8,6 +8,7 @@
       alb.ingress.kubernetes.io/group.name: alb
       alb.ingress.kubernetes.io/scheme: internet-facing
       alb.ingress.kubernetes.io/target-type: ip
+      argocd.argoproj.io/sync-wave: "70"
     name: argo-workflows
     namespace: argo-workflows
   spec:
